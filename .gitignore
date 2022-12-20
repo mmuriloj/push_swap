@@ -1,0 +1,10 @@
+checker_linux
+checker_Mac
+*.pdf
+*vscode
+codequoi
+*.o
+*.a
+*push
+sources/radixsort
+sources/countingsort*
