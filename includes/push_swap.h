@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:24:18 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/16 17:11:50 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:45:19 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 # define PUSH_SWAP
 
 # include "../libft/includes/libft.h"
-
+# include <stdio.h>
 #endif
