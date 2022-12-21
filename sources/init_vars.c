@@ -1,0 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_vars.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/21 11:24:56 by mumontei          #+#    #+#             */
+/*   Updated: 2022/12/21 14:40:04 by mumontei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/push_swap.h"
+
+void	init_vars(t_vars *vars, char *argv[], int argc)
+{
+	int i;
+
+	
+	vars->n_elem = argc - 1;
+	vars->array = malloc((vars->n_elem - 1) * sizeof(int));
+	i = 0;
+	while (++i <= vars->n_elem)
+	{
+		vars->array[i-1] = ft_atoi(argv[i]);
+	}
+	vars->min = get_min_value(vars->array, vars->n_elem);
+	vars->max = get_max_value(vars->array, vars->n_elem);
+	//printf("max: %d, min: %d\n", vars->max, vars->min);
+	if (vars->min < 0)
+	{
+		i = -1;
+		while (++i < vars->n_elem)
+			vars->array[i] = vars->array[i] - vars->min;
+	}
+}
