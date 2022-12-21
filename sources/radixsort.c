@@ -6,13 +6,13 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 11:14:51 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/20 18:27:21 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:38:19 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	get_max_value(int array[], int n)
+int	get_max_value(int *array, int n)
 {
 	int	i;
 	int	max;
@@ -27,7 +27,7 @@ int	get_max_value(int array[], int n)
 	return (max);
 }
 
-int	get_min_value(int array[], int n)
+int	get_min_value(int *array, int n)
 {
 	int	i;
 	int	min;
@@ -100,33 +100,27 @@ void	print_array(int array[], int size, int min)
 
 	i = -1;
 	while (++i < size)
-		array[i] = array[i] + min;
+	{
+		if (min < 0)
+			array[i] = array[i] + min;
+		else
+			array[i] = array[i];
+	}
 	i = -1;
 	while (++i < size)
-		printf("%d  ", array[i]);
-	printf("\n");
+		printf("%d ", array[i]);
+	printf("\n\n");
 }
 
 // Driver code
-int	main(void)
+int	main(int argc, char *argv[])
 {
-	int	array[] = {-4843, -254, 4765, 1220, 3434, -1454, -131, -2449, 704, \
-	3685, -3190, 808, -2069, -1610, 579, -3428, -2529, -2750, 1332, 622, -3897, \
-	-2359, -3270, 4794, 2762, -661, 3091, -1960, 4900, 4675, 1724, -3085, 4767, \
-	2890, -349, 4454, 1209, 892, 2050, -1900, 2509, 3482, 4023, 4247, 1268};
-	int	n = sizeof(array) / sizeof(array[0]);
-	int	min;
+	t_vars vars;
 	int	i;
-
-	min = get_min_value(array, n);
-	if (min < 0)
-	{
-		i = -1;
-		while (++i < n)
-			array[i] = array[i] - min;
-	}
-	radixsort(array, n);
-	print_array(array, n, min);
+	//int array[] = {-4843, -254, 1220, -661, -3091, -1960, 4900, 4023, 4247, 1268};
+	init_vars(&vars, argv, argc);
+	radixsort(vars.array, vars.n_elem);
+	print_array(vars.array, vars.n_elem, vars.min);
 }
 
 /*
