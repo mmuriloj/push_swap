@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 11:14:51 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/21 14:38:19 by mumontei         ###   ########.fr       */
+/*   Created: 2022/12/22 11:03:00 by mumontei          #+#    #+#             */
+/*   Updated: 2022/12/22 11:16:27 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,23 @@ int	get_min_value(int *array, int n)
 void	countingsort(int array[], int size, int place)
 {
 	int	i;
-	int	output[size + 1];
-	int	max = (array[0] / place) % 10;
+	int	max;
+	int	*output;
+	int	*count;
 
+	max = (array[0] / place) % 10;
+	output = malloc((size + 1) * sizeof(int));
+	if (!output)
+		exit(EXIT_FAILURE);
 	i = 0;
 	while (++i < size)
 	{
 		if (((array[i] / place) % 10) > max)
 			max = array[i];
 	}
-	int	count[max + 1];
+	count = malloc ((max + 1) * sizeof(int));
+	if (!count)
+		exit(EXIT_FAILURE);
 	i = -1;
 	while (++i < max)
 		count[i] = 0;
@@ -108,7 +115,7 @@ void	print_array(int array[], int size, int min)
 	}
 	i = -1;
 	while (++i < size)
-		printf("%d ", array[i]);
+		printf("%d: %d\n", i + 1, array[i]);
 	printf("\n\n");
 }
 
@@ -117,7 +124,7 @@ int	main(int argc, char *argv[])
 {
 	t_vars vars;
 	int	i;
-	//int array[] = {-4843, -254, 1220, -661, -3091, -1960, 4900, 4023, 4247, 1268};
+
 	init_vars(&vars, argv, argc);
 	radixsort(vars.array, vars.n_elem);
 	print_array(vars.array, vars.n_elem, vars.min);
@@ -125,7 +132,6 @@ int	main(int argc, char *argv[])
 
 /*
 #include "../includes/push_swap.h"
-
 int get_max_value(int array[], int n)
 {
 	int	i;
@@ -140,13 +146,11 @@ int get_max_value(int array[], int n)
 	}
 	return (max);
 }
-
 int get_min_value(int array[], int n)
 {
 	int	i;
 	int	min;
 	int	value;
-
 	min = array[0];
 	i = -1;
 	while (++i < n)
@@ -157,30 +161,25 @@ int get_min_value(int array[], int n)
 	}
 	return min;
 }
-
 // Using counting sort to sort the elements in the basis of significant places
 void countingsort(int array[], int size, int place)
 {
 	int output[size + 1];
 	int max = (array[0] / place) % 10;
-
 	for (int i = 1; i < size; i++) 
 	{
 		if (((array[i] / place) % 10) > max)
 			max = array[i];
 	}
 	int count[max + 1];
-
 	for (int i = 0; i < max; ++i)
 		count[i] = 0;
-
 	for (int i = 0; i < size; i++)
 		count[(array[i] / place) % 10]++;
 	
 	// Calculate cumulative count
 	for (int i = 1; i < 10; i++)
 		count[i] += count[i - 1];
-
 	// Place the elements in sorted order
 	for (int i = size - 1; i >= 0; i--)
 	{
@@ -190,23 +189,19 @@ void countingsort(int array[], int size, int place)
 	for (int i = 0; i < size; i++)
 		array[i] = output[i];
 }
-
 // Main function to implement radix sort
 void radixsort(int array[], int size)
 {
 	// Get maximum element
 	int max = get_max_value(array, size);
-
 	// Apply counting sort to sort elements based on place value.
 	for (int place = 1; max / place > 0; place *= 10)
 	countingsort(array, size, place);
 }
-
 // Print an array
 void print_array(int array[], int size, int min)
 {
 	int	i;
-
 	i = -1;
 	while (++i < size)
 		array[i] = array[i] + min;
@@ -216,7 +211,6 @@ void print_array(int array[], int size, int min)
 	}
 	printf("\n");
 }
-
 // Driver code
 int main()
 {
