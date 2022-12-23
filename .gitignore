@@ -7,5 +7,4 @@ codequoi
 *.a
 *push
 sources/radixsort
-sources/countingsort*
 push_swap
