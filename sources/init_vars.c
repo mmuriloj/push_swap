@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:24:56 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/22 12:41:51 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/23 10:21:46 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 
 	vars->n_elem = argc - 1;
 	//vars->array = malloc((vars->n_elem - 1) * sizeof(int));
-	vars->array = ft_calloc(vars->n_elem - 1, sizeof(int));
+	vars->array = ft_calloc(vars->n_elem, sizeof(int));
 	if (!vars->array)
 		exit(EXIT_FAILURE);
 	i = 0;

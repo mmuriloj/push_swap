@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 11:03:00 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/22 12:45:18 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/23 10:38:25 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void	countingsort(t_vars *vars, int place)
 	while (++i < vars->n_elem)
 		count[(vars->array[i] / place) % 10]++;
 	i = 0;
-	while (++i < 10)
+	//while (++i < 10)
+	while (++i < max + 1)
 		count[i] += count[i - 1];
 	i = vars->n_elem;
 	while (--i >= 0)
@@ -85,6 +86,8 @@ void	countingsort(t_vars *vars, int place)
 	i = -1;
 	while (++i < vars->n_elem)
 		vars->array[i] = output[i];
+	free(output);
+	free(count);
 }
 
 // Main function to implement radix sort
@@ -130,6 +133,7 @@ int	main(int argc, char *argv[])
 	init_vars(&vars, argv, argc);
 	radixsort(&vars);
 	print_array(&vars);
+	free(vars.array);
 }
 
 /*
