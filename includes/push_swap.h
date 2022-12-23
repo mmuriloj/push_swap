@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:24:18 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/22 12:25:07 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/23 12:54:28 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_vars
 	int	n_elem;
 	int	max;
 	int	min;
-	int	*array;
+	int	*sorted;
 }	t_vars;
 
 void	countingsort(t_vars *vars, int place);

@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 11:03:00 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/23 12:26:48 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/23 12:59:19 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	radixsort(t_vars *vars)
 	int	max;
 	int	place;
 
-	max = get_max_value(vars->array, vars->n_elem);
+	max = get_max_value(vars->sorted, vars->n_elem);
 	place = 1;
 	while (max / place > 0)
 	{
@@ -69,13 +69,13 @@ static void	print_array(t_vars *vars)
 	while (++i < vars->n_elem)
 	{
 		if (vars->min < 0)
-			vars->array[i] = vars->array[i] + vars->min;
+			vars->sorted[i] = vars->sorted[i] + vars->min;
 		else
-			vars->array[i] = vars->array[i];
+			vars->sorted[i] = vars->sorted[i];
 	}
 	i = -1;
 	while (++i < vars->n_elem)
-		printf("%d ", vars->array[i]);
+		printf("%d ", vars->sorted[i]);
 	printf("\n\n");
 }
 
@@ -89,5 +89,5 @@ int	main(int argc, char *argv[])
 	init_vars(&vars, argv, argc);
 	radixsort(&vars);
 	print_array(&vars);
-	free(vars.array);
+	free(vars.sorted);
 }
