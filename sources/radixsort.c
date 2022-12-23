@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 11:03:00 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/22 11:16:27 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/22 12:45:18 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,77 +45,80 @@ int	get_min_value(int *array, int n)
 }
 
 // Using counting sort to sort the elements in the basis of significant places
-void	countingsort(int array[], int size, int place)
+void	countingsort(t_vars *vars, int place)
 {
 	int	i;
 	int	max;
 	int	*output;
 	int	*count;
 
-	max = (array[0] / place) % 10;
-	output = malloc((size + 1) * sizeof(int));
+	max = (vars->array[0] / place) % 10;
+	//output = malloc((vars->n_elem + 1) * sizeof(int));
+	output = ft_calloc(vars->n_elem + 1, sizeof(int));
 	if (!output)
 		exit(EXIT_FAILURE);
 	i = 0;
-	while (++i < size)
+	while (++i < vars->n_elem)
 	{
-		if (((array[i] / place) % 10) > max)
-			max = array[i];
+		if (((vars->array[i] / place) % 10) > max)
+			max = vars->array[i];
 	}
-	count = malloc ((max + 1) * sizeof(int));
+	//count = malloc ((max + 1) * sizeof(int));
+	count = ft_calloc(max + 1, sizeof(int));
 	if (!count)
 		exit(EXIT_FAILURE);
 	i = -1;
 	while (++i < max)
 		count[i] = 0;
 	i = -1;
-	while (++i < size)
-		count[(array[i] / place) % 10]++;
+	while (++i < vars->n_elem)
+		count[(vars->array[i] / place) % 10]++;
 	i = 0;
 	while (++i < 10)
 		count[i] += count[i - 1];
-	i = size;
+	i = vars->n_elem;
 	while (--i >= 0)
 	{
-		output[count[(array[i] / place) % 10] - 1] = array[i];
-		count[(array[i] / place) % 10]--;
+		output[count[(vars->array[i] / place) % 10] - 1] = vars->array[i];
+		count[(vars->array[i] / place) % 10]--;
 	}
 	i = -1;
-	while (++i < size)
-		array[i] = output[i];
+	while (++i < vars->n_elem)
+		vars->array[i] = output[i];
 }
 
 // Main function to implement radix sort
-void	radixsort(int array[], int size)
+void	radixsort(t_vars *vars)
 {
 	int	max;
-	int	position;
+	int	place;
 
-	max = get_max_value(array, size);
-	position = 1;
-	while (max / position > 0)
+	max = get_max_value(vars->array, vars->n_elem);
+	place = 1;
+	while (max / place > 0)
 	{
-		countingsort(array, size, position);
-		position *= 10;
+		countingsort(vars, place);
+		place *= 10;
 	}
 }
 
 // Print an array
-void	print_array(int array[], int size, int min)
+static void	print_array(t_vars *vars)
 {
 	int	i;
 
+	printf("\nSorted:\n");
 	i = -1;
-	while (++i < size)
+	while (++i < vars->n_elem)
 	{
-		if (min < 0)
-			array[i] = array[i] + min;
+		if (vars->min < 0)
+			vars->array[i] = vars->array[i] + vars->min;
 		else
-			array[i] = array[i];
+			vars->array[i] = vars->array[i];
 	}
 	i = -1;
-	while (++i < size)
-		printf("%d: %d\n", i + 1, array[i]);
+	while (++i < vars->n_elem)
+		printf("%d ", vars->array[i]);
 	printf("\n\n");
 }
 
@@ -123,11 +126,10 @@ void	print_array(int array[], int size, int min)
 int	main(int argc, char *argv[])
 {
 	t_vars vars;
-	int	i;
 
 	init_vars(&vars, argv, argc);
-	radixsort(vars.array, vars.n_elem);
-	print_array(vars.array, vars.n_elem, vars.min);
+	radixsort(&vars);
+	print_array(&vars);
 }
 
 /*
