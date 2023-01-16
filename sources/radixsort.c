@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 11:03:00 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/23 12:59:19 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:31:27 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	radixsort(t_vars *vars)
 }
 
 // Print an array
-static void	print_array(t_vars *vars)
+void	print_array(t_vars *vars)
 {
 	int	i;
 
@@ -80,14 +80,3 @@ static void	print_array(t_vars *vars)
 }
 
 // Driver code
-int	main(int argc, char *argv[])
-{
-	t_vars	vars;
-
-	if (argc < 3)
-		return (0);
-	init_vars(&vars, argv, argc);
-	radixsort(&vars);
-	print_array(&vars);
-	free(vars.sorted);
-}
