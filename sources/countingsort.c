@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:37:31 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/16 16:25:51 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:02:10 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	cumulative_arr(t_vars *vars, int *count_arr, int digit, int place)
 	int	i;
 
 	i = -1;
-	while (++i < vars->n_elem)
+	while (++i < vars->len_a)
 		count_arr[(vars->sorted[i] / place) % 10]++;
 	i = 0;
 	while (++i < digit + 1)
@@ -31,7 +31,7 @@ static int	find_biggest_digit(t_vars *vars, int place)
 
 	big_digit = (vars->sorted[0] / place) % 10;
 	i = 0;
-	while (++i < vars->n_elem)
+	while (++i < vars->len_a)
 	{
 		if (((vars->sorted[i] / place) % 10) > big_digit)
 			big_digit = vars->sorted[i];
@@ -48,7 +48,7 @@ void	countingsort(t_vars *vars, int place)
 	int	*count_array;
 
 	biggest_digit = (vars->sorted[0] / place) % 10;
-	out = ft_calloc(vars->n_elem + 1, sizeof(int));
+	out = ft_calloc(vars->len_a + 1, sizeof(int));
 	if (!out)
 		exit(EXIT_FAILURE);
 	biggest_digit = find_biggest_digit(vars, place);
@@ -56,14 +56,14 @@ void	countingsort(t_vars *vars, int place)
 	if (!count_array)
 		exit(EXIT_FAILURE);
 	cumulative_arr(vars, count_array, biggest_digit, place);
-	i = vars->n_elem;
+	i = vars->len_a;
 	while (--i >= 0)
 	{
 		out[count_array[(vars->sorted[i] / place) % 10] - 1] = vars->sorted[i];
 		count_array[(vars->sorted[i] / place) % 10]--;
 	}
 	i = -1;
-	while (++i < vars->n_elem)
+	while (++i < vars->len_a)
 		vars->sorted[i] = out[i];
 	free(out);
 	free(count_array);

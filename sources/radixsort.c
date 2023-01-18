@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 11:03:00 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/16 15:31:27 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:02:25 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	radixsort(t_vars *vars)
 	int	max;
 	int	place;
 
-	max = get_max_value(vars->sorted, vars->n_elem);
+	max = get_max_value(vars->sorted, vars->len_a);
 	place = 1;
 	while (max / place > 0)
 	{
@@ -60,13 +60,13 @@ void	radixsort(t_vars *vars)
 }
 
 // Print an array
-void	print_array(t_vars *vars)
+void	print_sorted(t_vars *vars)
 {
 	int	i;
 
 	printf("\nSorted:\n");
 	i = -1;
-	while (++i < vars->n_elem)
+	while (++i < vars->len_a)
 	{
 		if (vars->min < 0)
 			vars->sorted[i] = vars->sorted[i] + vars->min;
@@ -74,9 +74,7 @@ void	print_array(t_vars *vars)
 			vars->sorted[i] = vars->sorted[i];
 	}
 	i = -1;
-	while (++i < vars->n_elem)
+	while (++i < vars->len_a)
 		printf("%d ", vars->sorted[i]);
 	printf("\n\n");
 }
-
-// Driver code

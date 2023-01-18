@@ -4,7 +4,7 @@ HEADERS_DIR 	=	./includes/
 SOURCES_DIR		=	./sources/
 
 HEADERS_LIST	=	push_swap.h
-SOURCES_LIST	=	radixsort.c init_vars.c countingsort.c \
+SOURCES_LIST	=	radixsort.c utils.c countingsort.c \
 					main.c swap.c push.c
 
 HEADERS			=	${addprefix ${HEADERS_DIR}, ${HEADERS_LIST}}
