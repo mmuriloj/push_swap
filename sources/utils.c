@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:24:56 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 17:46:50 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:44:05 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 	vars->len_a = argc - 1;
 	vars->len_b = 0;
 	vars->sorted = ft_calloc(vars->len_a, sizeof(int));
-	vars->stack_a.nums = ft_calloc(vars->len_a - 1, sizeof(int));
+	vars->stack_a.nums = ft_calloc(vars->len_a, sizeof(int));
 	if (!vars->sorted || !vars->stack_a.nums)
 		exit(EXIT_FAILURE);
 	i = 0;
-	while (++i <= vars->len_a)
+	while (i < vars->len_a)
 	{
-		vars->sorted[i - 1] = ft_atoi(argv[i]);
-		vars->stack_a.nums[i - 1] = ft_atoi(argv[i]);
+		vars->sorted[i] = ft_atoi(argv[i + 1]);
+		vars->stack_a.nums[i] = ft_atoi(argv[i + 1]);
+		i++;
 	}
 	vars->min = get_min_value(vars->sorted, vars->len_a);
 	vars->max = get_max_value(vars->sorted, vars->len_a);

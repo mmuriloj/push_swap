@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:41:27 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 18:00:22 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:51:10 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,14 @@ void push_b(t_vars *vars)
 		new_b[i] = vars->stack_b.nums[i - 1];
 	vars->stack_b.nums = new_b;
 	free(ptr_b);
-	i = 0;
-	while(++i <= vars->len_a - 1)
+	i = 1;
+	while(i <= vars->len_a)
+	{
+		//printf("vars->stack_a.nums[i]: %d\n", vars->stack_a.nums[i]);
+		//printf("i: %d, len_a:%d\n", i, vars->len_a);
 		new_a[i - 1] = vars->stack_a.nums[i];
+		i++;
+	}
 	//ft_printf("i: %d", new_a[i - 1]);
 	vars->stack_a.nums = new_a;
 	free(ptr_a);

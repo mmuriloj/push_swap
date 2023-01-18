@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:11:14 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 18:15:58 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:53:37 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,10 @@ int	main(int argc, char *argv[])
 	init_vars(&vars, argv, argc);
 	radixsort(&vars);
 	//print_sorted(&vars);		//apagar
-
 	print_stacks(&vars);
-	push_b(&vars);
-
-	//push_b(&vars);
-	push_b(&vars);
 	//swap('b', &vars);
-	swap('b', &vars);
-	//push_b(&vars);
-	//print_stack_a(&vars);
+	push_b(&vars);
+	push_b(&vars);
 	print_stacks(&vars);
 	//swap('b', &vars);
 	//swap('b', &vars);
@@ -46,38 +40,39 @@ int	main(int argc, char *argv[])
 
 void	print_stack_a(t_vars *vars)
 {
-	int *ptr;
 	
-	ptr = vars->stack_a.nums;
+	int	i;
+
 	ft_printf("stack A: ");
 	if (vars->len_a == 0)
 	{
 		printf("\n");
 		return ;
 	}
-	while(*ptr)
+	i = 0;
+	while (i < vars->len_a)
 	{
-		ft_printf("%d ", *ptr);
-		ptr++;
+		ft_printf("%d ", vars->stack_a.nums[i]);
+		i++;
 	}
 	printf("\n");
 }
 
 void	print_stack_b(t_vars *vars)
 {
-	int *ptr;
+	int i;
 	
-	ptr = vars->stack_b.nums;
 	ft_printf("stack B: ");
 	if (vars->len_b == 0)
 	{
 		printf("\n");
 		return ;
 	}
-	while(*ptr)
+	i = 0;
+	while (i < vars->len_b)
 	{
-		ft_printf("%d ", *ptr);
-		ptr++;
+		ft_printf("%d ", vars->stack_b.nums[i]);
+		i++;
 	}
 	printf("\n");
 }
