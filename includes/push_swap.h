@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:24:18 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/16 16:20:07 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:10:30 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ int		get_min_value(int *array, int n);
 void	radixsort(t_vars *vars);
 void	print_array(t_vars *vars);
 void	swap(t_vars *vars, char c);
+void	push_a(t_vars *vars);
 #endif

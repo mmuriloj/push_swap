@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:11:14 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/16 16:27:57 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:16:25 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ int	main(int argc, char *argv[])
 		return (0);
 	init_vars(&vars, argv, argc);
 	radixsort(&vars);
+	//p_arr(&vars);			//apagar
+	//swap(&vars, 'a');		//apagar
+	push_a(&vars);
 	p_arr(&vars);			//apagar
-	swap(&vars, 'a');		//apagar
-	p_arr(&vars);			//apagar
-	print_array(&vars);		//apagar
+	//print_array(&vars);		//apagar
 	free(vars.sorted);
 	free(vars.stack_a.nums);
 }
