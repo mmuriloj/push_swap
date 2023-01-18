@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:11:14 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 18:53:37 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:02:28 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,29 @@ int	main(int argc, char *argv[])
 	//swap('b', &vars);
 	push_b(&vars);
 	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
+	push_b(&vars);
 	print_stacks(&vars);
 	//swap('b', &vars);
 	//swap('b', &vars);
 	//stack_length(vars.stack_a.nums);
 	free(vars.sorted);
-	//free(vars.stack_a.nums);
-	//free(vars.stack_b.nums);
+	free(vars.stack_a.nums);
+	free(vars.stack_b.nums);
 }
 
 void	print_stack_a(t_vars *vars)
