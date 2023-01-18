@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:07:32 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 13:57:22 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:52:58 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	swap(char c, t_vars *vars)
 
 	if (c == 'a')
 	{
+		if (vars->len_a < 2)
+			return ;
 		aux = vars->stack_a.nums[0];
 		vars->stack_a.nums[0] = vars->stack_a.nums[1];
 		vars->stack_a.nums[1] = aux;
@@ -25,6 +27,8 @@ void	swap(char c, t_vars *vars)
 	}
 	else
 	{
+		if (vars->len_b < 2)
+			return ;
 		aux = vars->stack_b.nums[0];
 		vars->stack_b.nums[0] = vars->stack_b.nums[1];
 		vars->stack_b.nums[1] = aux;

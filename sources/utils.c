@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:24:56 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 16:50:05 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:46:50 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 	vars->len_a = argc - 1;
 	vars->len_b = 0;
 	vars->sorted = ft_calloc(vars->len_a, sizeof(int));
-	vars->stack_a.nums = ft_calloc(vars->len_a, sizeof(int));
+	vars->stack_a.nums = ft_calloc(vars->len_a - 1, sizeof(int));
 	if (!vars->sorted || !vars->stack_a.nums)
 		exit(EXIT_FAILURE);
 	i = 0;
