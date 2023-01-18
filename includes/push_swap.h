@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:24:18 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 16:50:24 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:59:45 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../libft/includes/libft.h"
 # include <stdio.h> //apagar
 
+# define TRUE 1
+# define FALSE 0
 # define SA "sa"
 # define SB "sb"
 # define PA "pa"
