@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:11:14 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/19 14:55:02 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/19 15:44:49 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,18 @@ int	main(int argc, char *argv[])
 	
 	print_stacks(&vars);
 	int i = 0;
-	while (i++ < 10)
+	while (i++ < 5)
 	{
 		push_b(&vars);
+		print_stacks(&vars);
+		reverse_rotate('r', &vars);
+		print_stacks(&vars);
+	
 	}
 	print_stacks(&vars);
-	rotate('r', &vars);
+	reverse_rotate('a', &vars);
 	print_stacks(&vars);
-	rotate('r', &vars);
+	rotate('b', &vars);
 	print_stacks(&vars);
 	//rotate('r', &vars);
 	//print_stacks(&vars);

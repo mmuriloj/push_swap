@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:24:18 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/19 14:17:02 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/19 15:36:56 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ void	swap(char c, t_vars *vars);
 void	push_a(t_vars *vars);
 void	push_b(t_vars *vars);
 void	rotate(char c, t_vars *vars);
+void	reverse_rotate(char c, t_vars *vars);
 #endif
