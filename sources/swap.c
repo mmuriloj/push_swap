@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:07:32 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 20:08:02 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:40:47 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(char c, t_vars *vars)
 {
 	int	aux;
 	int	s_flag;
-	
+
 	s_flag = FALSE;
 	if (c == 's' && vars->len_a >= 2 && vars->len_b >= 2)
 		s_flag = TRUE;

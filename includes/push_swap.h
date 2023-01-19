@@ -6,12 +6,12 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:24:18 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 19:59:45 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:17:02 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include "../libft/includes/libft.h"
 # include <stdio.h> //apagar
@@ -31,18 +31,17 @@ typedef struct s_stack
 {
 	int	*nums;
 	int	last_num;
-} t_stack;
-
+}	t_stack;
 
 typedef struct s_vars
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
-	int	len_a;
-	int	len_b;
-	int	max;
-	int	min;
-	int	*sorted;
+	int		len_a;
+	int		len_b;
+	int		max;
+	int		min;
+	int		*sorted;
 }	t_vars;
 
 void	countingsort(t_vars *vars, int place);
@@ -54,6 +53,5 @@ void	print_sorted(t_vars *vars); //apagar
 void	swap(char c, t_vars *vars);
 void	push_a(t_vars *vars);
 void	push_b(t_vars *vars);
-//int		*realloc_stack(int *stack, unsigned int len, int size);
-//int		stack_length(int *stack);
+void	rotate(char c, t_vars *vars);
 #endif

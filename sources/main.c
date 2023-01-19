@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:11:14 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 20:18:52 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:55:02 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,34 +24,29 @@ int	main(int argc, char *argv[])
 		return (0);
 	init_vars(&vars, argv, argc);
 	radixsort(&vars);
+	
+	/*--------------------------------*/
 	//print_sorted(&vars);		//apagar
 	//print_stacks(&vars);
 	//swap('b', &vars);
+	
+	print_stacks(&vars);
 	int i = 0;
 	while (i++ < 10)
 	{
-		//print_stacks(&vars);
 		push_b(&vars);
-		//print_stacks(&vars);
-		swap('a', &vars);
-		//print_stacks(&vars);
-		swap('a', &vars);
-		//print_stacks(&vars);
-		push_b(&vars);
-		//print_stacks(&vars);
-		swap('a', &vars);
-		//print_stacks(&vars);
-		push_b(&vars);
-		//print_stacks(&vars);
-		swap('a', &vars);
-		//print_stacks(&vars);
-		swap('a', &vars);
-		//print_stacks(&vars);
-		push_b(&vars);
-		//print_stacks(&vars);
-		push_b(&vars);
-		//print_stacks(&vars);
 	}
+	print_stacks(&vars);
+	rotate('r', &vars);
+	print_stacks(&vars);
+	rotate('r', &vars);
+	print_stacks(&vars);
+	//rotate('r', &vars);
+	//print_stacks(&vars);
+	//rotate('r', &vars);
+	//print_stacks(&vars);
+	/*------------------------*/
+	
 	free(vars.sorted);
 	free(vars.stack_a.nums);
 	free(vars.stack_b.nums);
