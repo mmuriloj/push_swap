@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:11:14 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/19 15:44:49 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:06:06 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,15 @@ int	main(int argc, char *argv[])
 {
 	t_vars	vars;
 
-	if (argc < 3)
-		return (0);
+	check_args(argc, argv);
 	init_vars(&vars, argv, argc);
-	radixsort(&vars);
 	
 	/*--------------------------------*/
-	//print_sorted(&vars);		//apagar
-	//print_stacks(&vars);
-	//swap('b', &vars);
-	
 	print_stacks(&vars);
-	int i = 0;
-	while (i++ < 5)
-	{
-		push_b(&vars);
-		print_stacks(&vars);
-		reverse_rotate('r', &vars);
-		print_stacks(&vars);
-	
-	}
+	if (argc == 4)
+		three_num_stack(&vars);
 	print_stacks(&vars);
-	reverse_rotate('a', &vars);
-	print_stacks(&vars);
-	rotate('b', &vars);
-	print_stacks(&vars);
-	//rotate('r', &vars);
-	//print_stacks(&vars);
-	//rotate('r', &vars);
-	//print_stacks(&vars);
 	/*------------------------*/
-	
 	free(vars.sorted);
 	free(vars.stack_a.nums);
 	free(vars.stack_b.nums);

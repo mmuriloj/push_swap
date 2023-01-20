@@ -1,6 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
+/*   rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/19 14:57:30 by mumontei          #+#    #+#             */
+/*   Updated: 2023/01/19 14:57:35 by mumontei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
@@ -23,16 +35,16 @@ static void	rotate_a(char c, t_vars *vars)
 	if (c == 'r')
 		r_flag = TRUE;
 	arr = vars->stack_a.nums;
-	tmp = arr[vars->len_a - 1];
-	i = vars->len_a - 1;
-	while (i > 0)
+	tmp = arr[0];
+	i = 0;
+	while (i < vars->len_a - 1)
 	{
-		arr[i] = arr[i - 1];
-		i--;
+		arr[i] = arr[i + 1];
+		i++;
 	}
-	arr[0] = tmp;
+	arr[vars->len_a - 1] = tmp;
 	if (r_flag == FALSE)
-		ft_printf("ra\n");
+		ft_printf("rra\n");
 }
 
 static void	rotate_b(char c, t_vars *vars)
@@ -46,16 +58,16 @@ static void	rotate_b(char c, t_vars *vars)
 	if (c == 'r')
 		r_flag = TRUE;
 	arr = vars->stack_b.nums;
-	tmp = arr[vars->len_b - 1];
-	i = vars->len_b - 1;
-	while (i > 0)
+	tmp = arr[0];
+	i = 0;
+	while (i < vars->len_b - 1)
 	{
-		arr[i] = arr[i - 1];
-		i--;
+		arr[i] = arr[i + 1];
+		i++;
 	}
-	arr[0] = tmp;
+	arr[vars->len_b - 1] = tmp;
 	if (r_flag == FALSE)
-		ft_printf("rb\n");
+		ft_printf("rrb\n");
 }
 
 static void	rotate_both(t_vars *vars)
@@ -64,7 +76,7 @@ static void	rotate_both(t_vars *vars)
 	{
 		rotate_a('r', vars);
 		rotate_b('r', vars);
-		ft_printf("rr\n");
+		ft_printf("rrr\n");
 	}
 }
 

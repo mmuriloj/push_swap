@@ -6,11 +6,48 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:24:56 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/18 18:44:05 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:12:51 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	check_digit(const char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[0] == '-' && ft_strlen(str) > 1)
+		{
+			i++;
+			j = 1;
+			while (str[j] != '\0')
+			{
+				if (str[j] < '0' || str[j] > '9')
+					exit(EXIT_FAILURE);
+				j++;
+			}
+		}
+		else if ((str[i] < '0' || str[i] > '9') && str[i] != '\0')
+			exit(EXIT_FAILURE);
+		i++;
+	}
+}
+
+static void	check_if_only_numbers(int argc, char *argv[])
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		check_digit(argv[i]);
+		i++;
+	}
+}
 
 void	init_vars(t_vars *vars, char *argv[], int argc)
 {
@@ -24,12 +61,11 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 	vars->stack_a.nums = ft_calloc(vars->len_a, sizeof(int));
 	if (!vars->sorted || !vars->stack_a.nums)
 		exit(EXIT_FAILURE);
-	i = 0;
-	while (i < vars->len_a)
+	i = -1;
+	while (i++ < vars->len_a - 1)
 	{
 		vars->sorted[i] = ft_atoi(argv[i + 1]);
 		vars->stack_a.nums[i] = ft_atoi(argv[i + 1]);
-		i++;
 	}
 	vars->min = get_min_value(vars->sorted, vars->len_a);
 	vars->max = get_max_value(vars->sorted, vars->len_a);
@@ -39,29 +75,44 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 		while (++i < vars->len_a)
 			vars->sorted[i] = vars->sorted[i] - vars->min;
 	}
+	is_sorted(argc, vars);
 }
 
-/*
-int *realloc_stack(int *stack, unsigned int len, int size)
+void	check_args(int argc, char *argv[])
 {
-	int		*new;
-	size_t	i;
+	int	i;
 
-	new = ft_calloc(len, size);
-	i = -1;
-	while (stack[++i])
-		new[i] = stack[i];
-	free(stack);
-	return (new);
+	if (argc < 2)
+		exit(EXIT_FAILURE);
+	else
+		check_if_only_numbers(argc, argv);
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_strlen(argv[i]) > 10 || ft_atoi(argv[i]) >= MAX_INT)
+			exit(EXIT_FAILURE);
+		i++;
+	}
 }
 
-int	stack_length(int *stack)
+void	is_sorted(int argc, t_vars *vars)
 {
-	int	len;
+	int	i;
 
-	len = 0;
-	while (stack[len])
-		len++;
-	return (len);
-	
-}*/
+	vars->is_sorted = TRUE;
+	radixsort(vars);
+	i = 0;
+	while (i < argc - 2)
+	{
+		if (vars->stack_a.nums[i] != vars->sorted[i])
+		{
+			vars->is_sorted = FALSE;
+			break ;
+		}
+		i++;
+	}
+	if (vars->is_sorted)
+		exit(0);
+	else
+		ft_printf("Stack not sorted\n");
+}

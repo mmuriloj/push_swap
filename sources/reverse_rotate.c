@@ -1,24 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:57:30 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/19 14:57:35 by mumontei         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 13:43:51 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/19 14:56:45 by mumontei         ###   ########.fr       */
+/*   Created: 2023/01/20 14:18:54 by mumontei          #+#    #+#             */
+/*   Updated: 2023/01/20 14:19:03 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +23,16 @@ static void	reverse_rotate_a(char c, t_vars *vars)
 	if (c == 'r')
 		r_flag = TRUE;
 	arr = vars->stack_a.nums;
-	tmp = arr[0];
-	i = 0;
-	while (i < vars->len_a - 1)
+	tmp = arr[vars->len_a - 1];
+	i = vars->len_a - 1;
+	while (i > 0)
 	{
-		arr[i] = arr[i + 1];
-		i++;
+		arr[i] = arr[i - 1];
+		i--;
 	}
-	arr[vars->len_a - 1] = tmp;
+	arr[0] = tmp;
 	if (r_flag == FALSE)
-		ft_printf("rra\n");
+		ft_printf("ra\n");
 }
 
 static void	reverse_rotate_b(char c, t_vars *vars)
@@ -58,16 +46,16 @@ static void	reverse_rotate_b(char c, t_vars *vars)
 	if (c == 'r')
 		r_flag = TRUE;
 	arr = vars->stack_b.nums;
-	tmp = arr[0];
-	i = 0;
-	while (i < vars->len_b - 1)
+	tmp = arr[vars->len_b - 1];
+	i = vars->len_b - 1;
+	while (i > 0)
 	{
-		arr[i] = arr[i + 1];
-		i++;
+		arr[i] = arr[i - 1];
+		i--;
 	}
-	arr[vars->len_b - 1] = tmp;
+	arr[0] = tmp;
 	if (r_flag == FALSE)
-		ft_printf("rrb\n");
+		ft_printf("rb\n");
 }
 
 static void	reverse_rotate_both(t_vars *vars)
@@ -76,7 +64,7 @@ static void	reverse_rotate_both(t_vars *vars)
 	{
 		reverse_rotate_a('r', vars);
 		reverse_rotate_b('r', vars);
-		ft_printf("rrr\n");
+		ft_printf("rr\n");
 	}
 }
 
