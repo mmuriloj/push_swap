@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:02:07 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/20 15:07:42 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:06:19 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ void	three_num_stack(t_vars *vars)
 		reverse_rotate('a', vars);
 }
 
-/*void	push_swap(t_vars *vars)
+/*void	push_swap(int argc, t_vars *vars)
 {
-	
+	if (argc == 3 && !vars.is_sorted)
+		rotate('a', &vars);
+	if (argc == 4)
+		three_num_stack(&vars);
+	//if (argc == 6)
 }*/

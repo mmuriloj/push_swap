@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:18:54 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/20 14:19:03 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:18:41 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	reverse_rotate_a(char c, t_vars *vars)
 	int	r_flag;
 
 	r_flag = FALSE;
+	if (vars->len_a < 2)
+		return ;
 	if (c == 'r')
 		r_flag = TRUE;
 	arr = vars->stack_a.nums;
@@ -32,7 +34,7 @@ static void	reverse_rotate_a(char c, t_vars *vars)
 	}
 	arr[0] = tmp;
 	if (r_flag == FALSE)
-		ft_printf("ra\n");
+		ft_printf("rra\n");
 }
 
 static void	reverse_rotate_b(char c, t_vars *vars)
@@ -43,6 +45,8 @@ static void	reverse_rotate_b(char c, t_vars *vars)
 	int	r_flag;
 
 	r_flag = FALSE;
+	if (vars->len_b < 2)
+		return ;
 	if (c == 'r')
 		r_flag = TRUE;
 	arr = vars->stack_b.nums;
@@ -55,7 +59,7 @@ static void	reverse_rotate_b(char c, t_vars *vars)
 	}
 	arr[0] = tmp;
 	if (r_flag == FALSE)
-		ft_printf("rb\n");
+		ft_printf("rrb\n");
 }
 
 static void	reverse_rotate_both(t_vars *vars)
@@ -64,7 +68,7 @@ static void	reverse_rotate_both(t_vars *vars)
 	{
 		reverse_rotate_a('r', vars);
 		reverse_rotate_b('r', vars);
-		ft_printf("rr\n");
+		ft_printf("rrr\n");
 	}
 }
 

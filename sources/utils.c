@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:24:56 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/20 15:12:51 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:29:20 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,4 @@ void	is_sorted(int argc, t_vars *vars)
 	}
 	if (vars->is_sorted)
 		exit(0);
-	else
-		ft_printf("Stack not sorted\n");
 }

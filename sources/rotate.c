@@ -32,6 +32,8 @@ static void	rotate_a(char c, t_vars *vars)
 	int	r_flag;
 
 	r_flag = FALSE;
+	if (vars->len_a < 2)
+		return ;
 	if (c == 'r')
 		r_flag = TRUE;
 	arr = vars->stack_a.nums;
@@ -44,7 +46,7 @@ static void	rotate_a(char c, t_vars *vars)
 	}
 	arr[vars->len_a - 1] = tmp;
 	if (r_flag == FALSE)
-		ft_printf("rra\n");
+		ft_printf("ra\n");
 }
 
 static void	rotate_b(char c, t_vars *vars)
@@ -55,6 +57,8 @@ static void	rotate_b(char c, t_vars *vars)
 	int	r_flag;
 
 	r_flag = FALSE;
+	if (vars->len_b < 2)
+		return ;
 	if (c == 'r')
 		r_flag = TRUE;
 	arr = vars->stack_b.nums;
@@ -67,7 +71,7 @@ static void	rotate_b(char c, t_vars *vars)
 	}
 	arr[vars->len_b - 1] = tmp;
 	if (r_flag == FALSE)
-		ft_printf("rrb\n");
+		ft_printf("rb\n");
 }
 
 static void	rotate_both(t_vars *vars)
@@ -76,7 +80,7 @@ static void	rotate_both(t_vars *vars)
 	{
 		rotate_a('r', vars);
 		rotate_b('r', vars);
-		ft_printf("rrr\n");
+		ft_printf("rr\n");
 	}
 }
 

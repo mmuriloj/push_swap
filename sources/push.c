@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:41:27 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/20 15:11:23 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:38:31 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,24 @@ void	push_a(t_vars *vars)
 	ptr_b = &vars->stack_b.nums[0];
 	if (vars->len_b == 0)
 		return ;
-	new_a = ft_calloc(vars->len_a + 1, sizeof(int));
 	new_b = ft_calloc(vars->len_b - 1, sizeof(int));
+	new_a = ft_calloc(vars->len_a + 1, sizeof(int));
 	if (!new_a || !new_b)
 		exit(EXIT_FAILURE);
-	vars->len_a++;
 	vars->len_b--;
+	vars->len_a++;
 	new_a[0] = vars->stack_b.nums[0];
 	i = 0;
 	while (++i < vars->len_a)
 		new_a[i] = vars->stack_a.nums[i - 1];
 	vars->stack_a.nums = new_a;
 	free(ptr_a);
-	i = 0;
-	while (i++ < vars->len_b - 1)
-		new_b[i - 1] = vars->stack_a.nums[i];
+	i = 1;
+	while (i <= vars->len_b)
+	{
+		new_b[i - 1] = vars->stack_b.nums[i];
+		i++;
+	}
 	vars->stack_b.nums = new_b;
 	free(ptr_b);
 	ft_printf("pa\n");
