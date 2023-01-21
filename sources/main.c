@@ -25,24 +25,8 @@ int	main(int argc, char *argv[])
 	
 	/*--------------------------------*/
 	print_stacks(&vars);
-	push_b(&vars);
-	push_b(&vars);
-	push_b(&vars);
-	//push_b(&vars);
-	//push_b(&vars);
-	while(1)
-	{
-		//rotate('r', &vars);
-		//print_stacks(&vars);
-		swap('s', &vars);
-		//print_stacks(&vars);
-		//push_a(&vars);
-		//push_a(&vars);
-		//print_stacks(&vars);
-		//swap('s', &vars);
-		print_stacks(&vars);
-		//sleep(1);
-	}
+	three_num_stack(&vars);
+	print_stacks(&vars);
 	/*------------------------*/
 	free(vars.sorted);
 	free(vars.stack_a.nums);

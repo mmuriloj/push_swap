@@ -81,6 +81,7 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 void	check_args(int argc, char *argv[])
 {
 	int	i;
+	int	j;
 
 	if (argc < 2)
 		exit(EXIT_FAILURE);
@@ -92,6 +93,17 @@ void	check_args(int argc, char *argv[])
 		if (ft_strlen(argv[i]) > 10 || ft_atoi(argv[i]) >= MAX_INT)
 			exit(EXIT_FAILURE);
 		i++;
+	}
+	i = argc - 1;
+	while (i >= 2)
+	{
+		j = i - 1;
+		while (j-- >= 1)
+		{
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+				exit(EXIT_FAILURE);
+		}
+		i--;
 	}
 }
 
