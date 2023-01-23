@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:11:14 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/20 18:28:19 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:59:41 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ int	main(int argc, char *argv[])
 	init_vars(&vars, argv, argc);
 	
 	/*--------------------------------*/
-	print_stacks(&vars);
-	three_num_stack(&vars);
-	print_stacks(&vars);
-	/*------------------------*/
+	//print_stacks(&vars);
+	if (argc <= 4)
+		three_sort(&vars);
+	else if (argc <= 6)
+		five_sort(&vars);
+	//print_stacks(&vars);
+	/*------------>>------------*/
 	free(vars.sorted);
 	free(vars.stack_a.nums);
 	free(vars.stack_b.nums);
@@ -35,7 +38,6 @@ int	main(int argc, char *argv[])
 
 void	print_stack_a(t_vars *vars)
 {
-	
 	int	i;
 
 	ft_printf("\tstack A: ");

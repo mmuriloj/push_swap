@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:24:18 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/20 15:15:53 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:43:08 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_vars
 	int		min;
 	int		*sorted;
 	int		is_sorted;
+	int		min_a;
 }	t_vars;
 
 void	countingsort(t_vars *vars, int place);
@@ -57,7 +58,8 @@ void	push_a(t_vars *vars);
 void	push_b(t_vars *vars);
 void	rotate(char c, t_vars *vars);
 void	reverse_rotate(char c, t_vars *vars);
-void	three_num_stack(t_vars *vars);
+void	three_sort(t_vars *vars);
 void	check_args(int argc, char *argv[]);
 void	is_sorted(int argc, t_vars *vars);
+void	five_sort(t_vars *vars);
 #endif

@@ -6,13 +6,13 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:02:07 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/20 18:06:19 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:54:43 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	three_num_stack(t_vars *vars)
+void	three_sort(t_vars *vars)
 {
 	int	n1;
 	int	n2;
@@ -39,6 +39,26 @@ void	three_num_stack(t_vars *vars)
 		reverse_rotate('a', vars);
 }
 
+void	five_sort(t_vars *vars)
+{
+	int	min;
+	
+	min = get_min_value(vars->stack_a.nums, vars->len_a);
+	while (vars->len_a > 3)
+	{
+		min = get_min_value(vars->stack_a.nums, vars->len_a);
+		if (vars->stack_a.nums[0] == min)
+			push_b(vars);
+		if (vars->stack_a.nums[vars->len_a - 2] == min 
+		|| vars->stack_a.nums[vars->len_a - 1] == min)
+			reverse_rotate('a', vars);
+		else
+			rotate('a', vars);
+	}
+	three_sort(vars);
+	push_a(vars);
+	push_a(vars);
+}
 /*void	push_swap(int argc, t_vars *vars)
 {
 	if (argc == 3 && !vars.is_sorted)
