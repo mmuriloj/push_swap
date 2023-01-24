@@ -6,7 +6,7 @@ SOURCES_DIR		=	./sources/
 HEADERS_LIST	=	push_swap.h
 SOURCES_LIST	=	radixsort.c utils.c countingsort.c \
 					main.c swap.c push.c rotate.c \
-					reverse_rotate.c push_swap.c
+					reverse_rotate.c push_swap.c big_sort.c
 
 HEADERS			=	${addprefix ${HEADERS_DIR}, ${HEADERS_LIST}}
 SOURCES			=	${addprefix ${SOURCES_DIR}, ${SOURCES_LIST}}
@@ -21,7 +21,7 @@ LIBFT			=	${LIBFT_DIR}libft.a
 LIBFT_DIR		=	./libft/
 LIBFT_HEADERS	=	${LIBFT_DIR}includes/
 
-CC				=	cc
+CC				=	cc -fsanitize=address -static-libasan
 CFLAGS			=	-Wall -Werror -Wextra -g3
 
 
@@ -65,3 +65,4 @@ re:	fclean all
 
 
 #clear && make && clear && ARG=$(shuf -i 0-500 -n 3) && echo $ARG && ./push_swap $ARG
+#python3 pyviz.py `ruby -e "puts (1..20).to_a.shuffle.join(' ')"`

@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:11:14 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/23 13:59:41 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:56:41 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ int	main(int argc, char *argv[])
 	check_args(argc, argv);
 	init_vars(&vars, argv, argc);
 	
-	/*--------------------------------*/
-	//print_stacks(&vars);
+	/*--------------------------------*/	
 	if (argc <= 4)
 		three_sort(&vars);
 	else if (argc <= 6)
 		five_sort(&vars);
+	else
+		big_sort(0, &vars);
+	
 	//print_stacks(&vars);
 	/*------------>>------------*/
 	free(vars.sorted);

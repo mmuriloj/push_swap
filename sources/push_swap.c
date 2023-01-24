@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:02:07 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/23 13:54:43 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:30:46 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,28 @@ void	five_sort(t_vars *vars)
 	push_a(vars);
 	push_a(vars);
 }
-/*void	push_swap(int argc, t_vars *vars)
+
+void insert_sort(t_vars *vars)
 {
-	if (argc == 3 && !vars.is_sorted)
-		rotate('a', &vars);
-	if (argc == 4)
-		three_num_stack(&vars);
-	//if (argc == 6)
-}*/
+	int	min;
+	int	*middle_pos;
+
+	min = get_min_value(vars->stack_a.nums, vars->len_a);
+	while (vars->len_a > 3)
+	{
+		if (vars->is_sorted == TRUE)
+			printf("sorted\n");
+		min = get_min_value(vars->stack_a.nums, vars->len_a);
+		middle_pos = &vars->stack_a.nums[vars->len_a / 2 + 1];
+		if (vars->stack_a.nums[0] == min)
+			push_b(vars);
+		else if (&min >= middle_pos)
+			reverse_rotate('a', vars);
+		else
+			rotate('a', vars);
+	}
+	three_sort(vars);
+	while (vars->len_b != 0)
+		push_a(vars);
+
+}
