@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:02:07 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/25 13:41:39 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:27:11 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	five_sort(t_vars *vars)
 	{
 		min = get_min_value(vars->stack_a.nums, vars->len_a);
 		if (vars->stack_a.nums[0] == min)
-			push_b(vars);
+			push_b(0, vars);
 		if (vars->stack_a.nums[vars->len_a - 2] == min
 			|| vars->stack_a.nums[vars->len_a - 1] == min)
 			reverse_rotate('a', vars);
@@ -56,8 +56,8 @@ void	five_sort(t_vars *vars)
 			rotate('a', vars);
 	}
 	three_sort(vars);
-	push_a(vars);
-	push_a(vars);
+	push_a(0, vars);
+	push_a(0, vars);
 }
 
 void	insert_sort(t_vars *vars)
@@ -73,7 +73,7 @@ void	insert_sort(t_vars *vars)
 		min = get_min_value(vars->stack_a.nums, vars->len_a);
 		middle_pos = &vars->stack_a.nums[vars->len_a / 2 + 1];
 		if (vars->stack_a.nums[0] == min)
-			push_b(vars);
+			push_b(0, vars);
 		else if (&min >= middle_pos)
 			reverse_rotate('a', vars);
 		else
@@ -81,5 +81,5 @@ void	insert_sort(t_vars *vars)
 	}
 	three_sort(vars);
 	while (vars->len_b != 0)
-		push_a(vars);
+		push_a(0, vars);
 }

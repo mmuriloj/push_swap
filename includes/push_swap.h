@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:24:18 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/25 17:53:54 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:40:49 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	countingsort(t_vars *vars, int place);
 void	init_vars(t_vars *arr, char *argv[], int argc);
 int		get_max_value(int *array, int n);
 int		get_min_value(int *array, int n);
-void	print_sorted(t_vars *vars); //apagar
+void	swap_both(t_vars *vars);
 void	swap(char c, t_vars *vars);
-void	push_a(t_vars *vars);
-void	push_b(t_vars *vars);
+void	push_a(int i, t_vars *vars);
+void	push_b(int i, t_vars *vars);
 void	rotate(char c, t_vars *vars);
 void	reverse_rotate(char c, t_vars *vars);
 void	three_sort(t_vars *vars);
@@ -67,6 +67,6 @@ void	is_sorted(int argc, t_vars *vars);
 void	five_sort(t_vars *vars);
 void	insert_sort(t_vars *vars);
 int		sorted_pos(int num, t_vars *vars);
-void	big_sort(int i, t_vars *vars);
+void	big_sort(int max, int num, int max_bits, t_vars *vars);
 void	error_msg(int num, t_vars *vars);
 #endif
