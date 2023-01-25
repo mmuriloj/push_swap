@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radixsort.c                                        :+:      :+:    :+:   */
+/*   max_min_values.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 11:03:00 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/19 15:01:52 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:45:01 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,37 +44,44 @@ int	get_min_value(int *array, int n)
 	return (min);
 }
 
-// Main function to implement radix sort
-void	radixsort(t_vars *vars)
+static long int	ascii_to_long_int(const char *str)
 {
-	int	max;
-	int	place;
+	int			sign;
+	long int	result;
 
-	max = get_max_value(vars->sorted, vars->len_a);
-	place = 1;
-	while (max / place > 0)
+	result = 0;
+	sign = 1;
+	while (((*str >= '\t' && *str <= '\r') || *str == ' ') && *str != '\0')
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		countingsort(vars, place);
-		place *= 10;
+		if (*str == '-')
+			sign = -1 * sign;
+		str++;
+		if (*str == '-' || *str == '+')
+			return (0);
 	}
+	while (ft_isdigit(*str))
+	{
+		result = (result * 10) + (*str - 48);
+		str++;
+	}
+	return (sign * result);
 }
 
-// Print an array
-void	print_sorted(t_vars *vars)
+void	check_range(int argc, char *argv[], t_vars *vars)
 {
-	int	i;
+	long int	number;
+	int			i;
 
-	printf("\nSorted:\n");
-	i = -1;
-	while (++i < vars->len_a)
+	i = 0;
+	while (++i < argc)
 	{
-		if (vars->min < 0)
-			vars->sorted[i] = vars->sorted[i] + vars->min;
-		else
-			vars->sorted[i] = vars->sorted[i];
+		number = ascii_to_long_int(argv[i]);
+		if (number > MAX_INT || number < MIN_INT)
+		{
+			error_msg(0, vars);
+			exit(0);
+		}
 	}
-	i = -1;
-	while (++i < vars->len_a)
-		printf("%d ", vars->sorted[i]);
-	printf("\n\n");
 }

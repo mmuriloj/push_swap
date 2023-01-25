@@ -4,9 +4,10 @@ HEADERS_DIR 	=	./includes/
 SOURCES_DIR		=	./sources/
 
 HEADERS_LIST	=	push_swap.h
-SOURCES_LIST	=	radixsort.c utils.c countingsort.c \
+SOURCES_LIST	=	max_min_values.c utils.c bubblesort.c \
 					main.c swap.c push.c rotate.c \
-					reverse_rotate.c push_swap.c big_sort.c
+					reverse_rotate.c push_swap.c big_sort.c \
+					error.c
 
 HEADERS			=	${addprefix ${HEADERS_DIR}, ${HEADERS_LIST}}
 SOURCES			=	${addprefix ${SOURCES_DIR}, ${SOURCES_LIST}}
@@ -31,6 +32,9 @@ VALGRIND_FLAGS		=	valgrind --leak-check=full --show-leak-kinds=all --track-origi
 all: ${NAME}
 
 libft: ${LIBFT}
+
+pyviz:
+	python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
 
 ${NAME}:		${LIBFT} ${OBJECTS_DIR} ${OBJECTS}
 	${CC} ${CFLAGS} ${OBJECTS} ${LIBFT} ${INCLUDES} -o ${NAME}

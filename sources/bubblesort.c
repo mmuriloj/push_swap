@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   bubblesort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 15:11:14 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/25 17:31:32 by mumontei         ###   ########.fr       */
+/*   Created: 2022/12/16 14:37:31 by mumontei          #+#    #+#             */
+/*   Updated: 2023/01/25 18:46:51 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char *argv[])
+static void	bubble_swap(int *xp, int *yp)
 {
-	t_vars	vars;
+	int	temp;
 
-	check_args(argc, argv, &vars);
-	init_vars(&vars, argv, argc);
-	if (argc <= 4)
-		three_sort(&vars);
-	else if (argc <= 6)
-		five_sort(&vars);
-	else
-		big_sort(0, &vars);
-	free(vars.sorted);
-	free(vars.stack_a.nums);
-	free(vars.stack_b.nums);
+	temp = *xp;
+	*xp = *yp;
+	*yp = temp;
+}
+
+void	bubble_sort(int *arr, int n)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < n - 1)
+	{
+		j = 0;
+		while (j < n - i - 1)
+		{
+			if (arr[j] > arr[j + 1])
+				bubble_swap(&arr[j], &arr[j + 1]);
+			j++;
+		}	
+		i++;
+	}	
 }

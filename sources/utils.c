@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:24:56 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/20 16:29:20 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:40:34 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 {
 	int	i;
 
-	vars->stack_a.nums = NULL;
 	vars->stack_b.nums = NULL;
 	vars->len_a = argc - 1;
 	vars->len_b = 0;
@@ -64,9 +63,10 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 	i = -1;
 	while (i++ < vars->len_a - 1)
 	{
-		vars->sorted[i] = ft_atoi(argv[i + 1]);
 		vars->stack_a.nums[i] = ft_atoi(argv[i + 1]);
+		vars->sorted[i] = ft_atoi(argv[i + 1]);
 	}
+	bubble_sort(vars->sorted, argc - 1);
 	vars->min = get_min_value(vars->sorted, vars->len_a);
 	vars->max = get_max_value(vars->sorted, vars->len_a);
 	if (vars->min < 0)
@@ -78,22 +78,16 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 	is_sorted(argc, vars);
 }
 
-void	check_args(int argc, char *argv[])
+void	check_args(int argc, char *argv[], t_vars *vars)
 {
 	int	i;
 	int	j;
 
 	if (argc < 2)
-		exit(EXIT_FAILURE);
+		error_msg(0, vars);
 	else
 		check_if_only_numbers(argc, argv);
-	i = 1;
-	while (i < argc)
-	{
-		if (ft_strlen(argv[i]) > 10 || ft_atoi(argv[i]) >= MAX_INT)
-			exit(EXIT_FAILURE);
-		i++;
-	}
+	check_range(argc, argv, vars);
 	i = argc - 1;
 	while (i >= 2)
 	{
@@ -101,7 +95,7 @@ void	check_args(int argc, char *argv[])
 		while (j-- >= 1)
 		{
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
-				exit(EXIT_FAILURE);
+				error_msg(0, vars);
 		}
 		i--;
 	}
@@ -112,11 +106,10 @@ void	is_sorted(int argc, t_vars *vars)
 	int	i;
 
 	vars->is_sorted = TRUE;
-	radixsort(vars);
 	i = 0;
 	while (i < argc - 2)
 	{
-		if (vars->stack_a.nums[i] != vars->sorted[i])
+		if (vars->stack_a.nums[i] > vars->stack_a.nums[i + 1])
 		{
 			vars->is_sorted = FALSE;
 			break ;
@@ -124,5 +117,5 @@ void	is_sorted(int argc, t_vars *vars)
 		i++;
 	}
 	if (vars->is_sorted)
-		exit(0);
+		error_msg(2, vars);
 }

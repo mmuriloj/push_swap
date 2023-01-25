@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:24:18 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/24 13:04:05 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:53:54 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define TRUE 1
 # define FALSE 0
 # define MAX_INT 2147483647
+# define MIN_INT -2147483648
 # define SA "sa"
 # define SB "sb"
 # define PA "pa"
@@ -48,11 +49,12 @@ typedef struct s_vars
 	int		min_a;
 }	t_vars;
 
+void	bubble_sort(int *arr, int n);
+void	check_range(int argc, char *argv[], t_vars *vars);
 void	countingsort(t_vars *vars, int place);
 void	init_vars(t_vars *arr, char *argv[], int argc);
 int		get_max_value(int *array, int n);
 int		get_min_value(int *array, int n);
-void	radixsort(t_vars *vars);
 void	print_sorted(t_vars *vars); //apagar
 void	swap(char c, t_vars *vars);
 void	push_a(t_vars *vars);
@@ -60,10 +62,11 @@ void	push_b(t_vars *vars);
 void	rotate(char c, t_vars *vars);
 void	reverse_rotate(char c, t_vars *vars);
 void	three_sort(t_vars *vars);
-void	check_args(int argc, char *argv[]);
+void	check_args(int argc, char *argv[], t_vars *vars);
 void	is_sorted(int argc, t_vars *vars);
 void	five_sort(t_vars *vars);
 void	insert_sort(t_vars *vars);
 int		sorted_pos(int num, t_vars *vars);
 void	big_sort(int i, t_vars *vars);
+void	error_msg(int num, t_vars *vars);
 #endif
