@@ -6,13 +6,13 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:24:56 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/25 18:40:34 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:30:29 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	check_digit(const char *str)
+static void	check_digit(const char *str, t_vars *vars)
 {
 	int	i;
 	int	j;
@@ -27,24 +27,24 @@ static void	check_digit(const char *str)
 			while (str[j] != '\0')
 			{
 				if (str[j] < '0' || str[j] > '9')
-					exit(EXIT_FAILURE);
+					error_msg(0, vars);
 				j++;
 			}
 		}
 		else if ((str[i] < '0' || str[i] > '9') && str[i] != '\0')
-			exit(EXIT_FAILURE);
+			error_msg(0, vars);
 		i++;
 	}
 }
 
-static void	check_if_only_numbers(int argc, char *argv[])
+static void	check_if_only_numbers(int argc, char *argv[], t_vars *vars)
 {
 	int	i;
 
 	i = 1;
 	while (i < argc)
 	{
-		check_digit(argv[i]);
+		check_digit(argv[i], vars);
 		i++;
 	}
 }
@@ -59,7 +59,7 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 	vars->sorted = ft_calloc(vars->len_a, sizeof(int));
 	vars->stack_a.nums = ft_calloc(vars->len_a, sizeof(int));
 	if (!vars->sorted || !vars->stack_a.nums)
-		exit(EXIT_FAILURE);
+		error_msg(2, vars);
 	i = -1;
 	while (i++ < vars->len_a - 1)
 	{
@@ -84,14 +84,14 @@ void	check_args(int argc, char *argv[], t_vars *vars)
 	int	j;
 
 	if (argc < 2)
-		error_msg(0, vars);
+		exit(EXIT_FAILURE);
 	else
-		check_if_only_numbers(argc, argv);
+		check_if_only_numbers(argc, argv, vars);
 	check_range(argc, argv, vars);
 	i = argc - 1;
 	while (i >= 2)
 	{
-		j = i - 1;
+		j = i;
 		while (j-- >= 1)
 		{
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
@@ -117,5 +117,5 @@ void	is_sorted(int argc, t_vars *vars)
 		i++;
 	}
 	if (vars->is_sorted)
-		error_msg(2, vars);
+		exit(EXIT_FAILURE);
 }
