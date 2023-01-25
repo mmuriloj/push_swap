@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:11:14 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/24 12:56:41 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:43:19 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_stack_a(t_vars *vars);
 void	print_stack_b(t_vars *vars);
-void print_stacks(t_vars *vars);
+void	print_stacks(t_vars *vars);
 
 int	main(int argc, char *argv[])
 {
@@ -22,17 +22,12 @@ int	main(int argc, char *argv[])
 
 	check_args(argc, argv);
 	init_vars(&vars, argv, argc);
-	
-	/*--------------------------------*/	
 	if (argc <= 4)
 		three_sort(&vars);
 	else if (argc <= 6)
 		five_sort(&vars);
 	else
 		big_sort(0, &vars);
-	
-	//print_stacks(&vars);
-	/*------------>>------------*/
 	free(vars.sorted);
 	free(vars.stack_a.nums);
 	free(vars.stack_b.nums);
@@ -59,8 +54,8 @@ void	print_stack_a(t_vars *vars)
 
 void	print_stack_b(t_vars *vars)
 {
-	int i;
-	
+	int	i;
+
 	ft_printf("\tstack B: ");
 	if (vars->len_b == 0)
 	{
@@ -76,7 +71,7 @@ void	print_stack_b(t_vars *vars)
 	printf("\n");
 }
 
-void print_stacks(t_vars *vars)
+void	print_stacks(t_vars *vars)
 {
 	print_stack_a(vars);
 	print_stack_b(vars);

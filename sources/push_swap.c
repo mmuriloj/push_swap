@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:02:07 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/23 16:30:46 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:41:39 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	three_sort(t_vars *vars)
 void	five_sort(t_vars *vars)
 {
 	int	min;
-	
+
 	min = get_min_value(vars->stack_a.nums, vars->len_a);
 	while (vars->len_a > 3)
 	{
 		min = get_min_value(vars->stack_a.nums, vars->len_a);
 		if (vars->stack_a.nums[0] == min)
 			push_b(vars);
-		if (vars->stack_a.nums[vars->len_a - 2] == min 
-		|| vars->stack_a.nums[vars->len_a - 1] == min)
+		if (vars->stack_a.nums[vars->len_a - 2] == min
+			|| vars->stack_a.nums[vars->len_a - 1] == min)
 			reverse_rotate('a', vars);
 		else
 			rotate('a', vars);
@@ -60,7 +60,7 @@ void	five_sort(t_vars *vars)
 	push_a(vars);
 }
 
-void insert_sort(t_vars *vars)
+void	insert_sort(t_vars *vars)
 {
 	int	min;
 	int	*middle_pos;
@@ -82,5 +82,4 @@ void insert_sort(t_vars *vars)
 	three_sort(vars);
 	while (vars->len_b != 0)
 		push_a(vars);
-
 }

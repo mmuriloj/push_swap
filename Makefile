@@ -21,9 +21,10 @@ LIBFT			=	${LIBFT_DIR}libft.a
 LIBFT_DIR		=	./libft/
 LIBFT_HEADERS	=	${LIBFT_DIR}includes/
 
-CC				=	cc -fsanitize=address -static-libasan
+CC				=	cc 
 CFLAGS			=	-Wall -Werror -Wextra -g3
 
+#-fsanitize=address -static-libasan
 
 VALGRIND_FLAGS		=	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 
