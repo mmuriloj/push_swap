@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:24:56 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/25 21:13:40 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:13:08 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,9 @@ void	is_sorted(int argc, t_vars *vars)
 		i++;
 	}
 	if (vars->is_sorted)
+	{
+		free(vars->sorted);
+		free(vars->stack_a.nums);
 		exit(EXIT_FAILURE);
+	}
 }

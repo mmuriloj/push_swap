@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:24:18 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/25 21:55:03 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:28:59 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,15 @@
 # define PUSH_SWAP_H
 
 # include "../libft/includes/libft.h"
-# include <stdio.h> //apagar
 
 # define TRUE 1
 # define FALSE 0
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
-# define SA "sa"
-# define SB "sb"
-# define PA "pa"
-# define PB "pb"
-# define RA "ra"
-# define RB "rb"
-# define RRA "rra"
-# define RRB "rrb"
 
 typedef struct s_stack
 {
 	int	*nums;
-	int	last_num;
 }	t_stack;
 
 typedef struct s_vars
@@ -44,7 +34,6 @@ typedef struct s_vars
 	int		max;
 	int		min;
 	int		*sorted;
-	int		*sorted_pos;
 	int		is_sorted;
 	int		min_a;
 }	t_vars;
