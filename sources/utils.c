@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:24:56 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/25 20:30:29 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 21:13:40 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	init_vars(t_vars *vars, char *argv[], int argc)
 	{
 		i = -1;
 		while (++i < vars->len_a)
-			vars->sorted[i] = vars->sorted[i] - vars->min;
+			vars->stack_a.nums[i] = vars->stack_a.nums[i] - vars->min;
 	}
 	is_sorted(argc, vars);
 }
@@ -92,7 +92,7 @@ void	check_args(int argc, char *argv[], t_vars *vars)
 	while (i >= 2)
 	{
 		j = i;
-		while (j-- >= 1)
+		while (j-- > 1)
 		{
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
 				error_msg(0, vars);

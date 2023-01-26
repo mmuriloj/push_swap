@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 11:03:00 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/25 18:45:01 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 21:54:13 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	get_min_value(int *array, int n)
 	return (min);
 }
 
-static long int	ascii_to_long_int(const char *str)
+long int	ascii_to_long_int(const char *str)
 {
 	int			sign;
 	long int	result;

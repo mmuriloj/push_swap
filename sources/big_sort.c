@@ -6,33 +6,17 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:04:02 by mumontei          #+#    #+#             */
-/*   Updated: 2023/01/25 19:41:48 by mumontei         ###   ########.fr       */
+/*   Updated: 2023/01/25 21:35:09 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-int	sorted_pos(int num, t_vars *vars)
-{
-	int	pos;
-
-	pos = 0;
-	while (pos < vars->len_a + vars->len_b)
-	{
-		if (num == vars->sorted[pos])
-			return (pos);
-		pos++;
-	}
-	return (pos);
-}
 
 void	big_sort(int max, int num, int max_bits, t_vars *vars)
 {
 	int	j;
 	int	i;
 
-	while (++i < vars->len_a)
-		vars->stack_a.nums[i] = sorted_pos(vars->stack_a.nums[i], vars);
 	max = get_max_value(vars->stack_a.nums, vars->len_a);
 	while ((max >> max_bits) != 0)
 		++max_bits;

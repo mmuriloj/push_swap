@@ -34,7 +34,7 @@ all: ${NAME}
 libft: ${LIBFT}
 
 pyviz:
-	python3 pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
+	python3 pyviz.py `ruby -e "puts (1..400).to_a.shuffle.join(' ')"`
 
 ${NAME}:		${LIBFT} ${OBJECTS_DIR} ${OBJECTS}
 	${CC} ${CFLAGS} ${OBJECTS} ${LIBFT} ${INCLUDES} -o ${NAME}
