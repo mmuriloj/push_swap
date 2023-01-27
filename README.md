@@ -33,7 +33,7 @@ Valid examples
 ```
 
 ### Visualization
-To see the sorting of a stack of random numbers ranging from 1 up until 70, for example, you can type the following command on the terminal and run the visualizer:
+To see the sorting of a stack of random numbers ranging from 1 up to 70, for example, you can type the following command on the terminal and run the visualizer:
 ```bash
 python3 pyviz.py `ruby -e "puts (1..70).to_a.shuffle.join(' ')"`
 ```
